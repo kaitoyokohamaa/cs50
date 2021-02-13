@@ -1,6 +1,8 @@
 #include <cs50.h>
 #include <stdio.h>
 
+
+
 int main(void)
 {
     // TODO: Prompt for start size
@@ -19,7 +21,7 @@ int main(void)
     while(end <=start );
     // TODO: Calculate number of years until we reach threshold
     int n= start + (start/3)-(start/4);
-    int yerars;
+    int yerars=0;
     // 一年目だと1200を入力したら100増えるが二年目はそこから人口削減をしないといけない
     // だからループ文を使ってnが変更するたびに✖割り算をする値を毎回変えないといけない。
     do
@@ -30,7 +32,7 @@ int main(void)
             yerars=1+i;
         }
     }
-    while(n<end);
+    while(n<=end);
     // TODO: Print number of years
-    printf("%d" ,yerars+1);
+    printf("Years: %d" ,yerars+1);
 }
