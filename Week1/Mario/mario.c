@@ -1,53 +1,43 @@
 #include<cs50.h>
 #include<stdio.h>
 
- int height;
+// 高さの変数宣言→javascriptならletみたいなノリ
+int height;
+// 関数を変数として扱う
+int get_positive_int(void);
+// 変数で入力した高さ分のブロック作り
 void makeBlock(int n)
 {
     int makeHeight= height;
-    // ここでブロックを作成する→やりたいことは逆さまにする。例えばブロックの数が＃＃なら.を一つにする
-        if(n>0||n==0)
+        if(n > 0)
         {
-        for(int g = n;g<makeHeight;g++)
+        for(int g = n; g < makeHeight ; g++)
         {
-            // printf("%d", g);
              printf(" ");
         }
         }
-    // ここで変数数分のループしたブロックを作成する
-        for (int i = 0; i ==n||i<n ; i++)
+        for (int i = 0;i<n ; i++)
         {
             printf("#");
         }
         printf("%s","\n");
 }
-
-int get_positive_int(void);
-
-int main(void)
-
-{
-    // 関数heightをここで呼び出す
-    int i = get_positive_int();
-    // 変数分だけルーブする
-    for(int j=0;j<i;j++)
-    {
-        makeBlock(j);
-    }
-}
-
-// Prompt user for positive integer
+// 1以上8未満はNGですよ
 int get_positive_int(void)
 {
-
     do
     {
         height = get_int("height: ");
     }
-    // もし高さより1の方が大きいかつ8以上だったらもう一度ループする
     while (height < 1 || height > 8);
     return height;
 }
-
-
-
+// 変数数のループを作るために値を渡してます
+int main(void)
+{
+    int i = get_positive_int();
+    for(int j = 0 ; j <= i ; j++)
+    {
+        makeBlock(j);
+    }
+}
