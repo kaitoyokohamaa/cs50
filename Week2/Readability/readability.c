@@ -33,9 +33,9 @@ int main(void)
     S=((double)sentence/(double)word)*100;
     index = 0.0588 * (double)L - 0.296 * (double)S - 15.8;
     if(index<0){
-        printf("Before Grade 1 \n");
+        printf("Before Grade 1\n");
     }else if(index>16){
-        printf("Grade 16+ \n");
+        printf("Grade 16+\n");
     }else{
     printf("Grade %d",index);
     printf("\n");
