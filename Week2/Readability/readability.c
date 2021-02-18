@@ -9,7 +9,7 @@ int main(void)
     //文字列をカウントする
 
     int score =0;
-    int word=1;
+    int word=0;
     int sentence=0;
     double L=0;
     double S=0;
@@ -17,7 +17,7 @@ int main(void)
     for(int i = 0; i <= strlen(text); i++)
     {
         // カウントしないタイプチェック
-        if(text[i] != '\0' && text[i] != ' ' &&text[i] != '!' &&text[i] != ','&& text[i] != '"' && text[i] != '.'&& text[i] != '?'&& text[i] != ';'&& text[i] != ':'&& text[i] != '-' &&isalnum(text[i]) != 0 )
+        if(isalnum(text[i]) != 0 )
         {
              score=score+1;
         }
@@ -31,13 +31,13 @@ int main(void)
     }
     L=((double)score/(double)word)*100;
     S=((double)sentence/(double)word)*100;
-    index = 0.0588 * (double)L - 0.296 * (double)S - 15.8;
+    index = 0.0588 * L - 0.296 * S - 15.8;
     if(index<0){
         printf("Before Grade 1\n");
     }else if(index>16){
         printf("Grade 16+\n");
     }else{
-    printf("Grade %d",index);
+    printf("Grade %d",index-1);
     printf("\n");
     }
 }
