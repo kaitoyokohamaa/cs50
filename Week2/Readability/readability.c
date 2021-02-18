@@ -31,13 +31,14 @@ int main(void)
 
     L=((double)score/(double)word)*100;
     S=((double)sentence/(double)word)*100;
-    // printf("%f",(0.0588 * L )- (0.296 * S) - 15.8);
+
     index = 0.0588 * (double)L - 0.296 * (double)S - 15.8;
     if(index<0){
-        printf("Before Grade 1");
+        printf("Before Grade 1 \n");
     }else if(index>16){
-        printf("Grade 16+");
+        printf("Grade 16+ \n");
     }else{
-    printf("Grade %d",index);
+        printf("Grade %d",index);
+        printf("\n");
     }
 }
