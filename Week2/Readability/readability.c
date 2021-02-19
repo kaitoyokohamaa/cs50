@@ -8,7 +8,6 @@ int main(void)
 {
     string text = get_string("Text: ");
     //文字列をカウントする
-
     int score =0;
     int word=1;
     int sentence=0;
