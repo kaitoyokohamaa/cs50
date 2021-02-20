@@ -1,15 +1,12 @@
 <h1>Week2課題内容</h1></br>
 <ul>
 <li>
-人口を自動で計算する問題(Scrabble)
+文字を暗号化して点数を勝負するゲーム(Scrabble)
 </li>
 <li>
-マリオの最後のブロックを#を使って作る問題(Mario)
+暗号化して文字を出力するプログラム(Caesar)
 </li>
 <li>
-Hello,nameで自分の名前を出力する問題(Hellos)
-</li>
-<li>
-greedy algorithmを用いてお釣りのコインを計算(Cash)
+Coleman-Liau indexという式を用いて、100ワードあたりの文字、センテンス、単語数からリーダビリティを測る。その年齢にあった本かをチェックすることができるプログラム(Readability)
 </li>
 </ul>
