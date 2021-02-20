@@ -5,21 +5,46 @@
 #include <stdlib.h>
 int main(int argc, string argv[])
 {
-    if(argc==2)
+
+    char *ascii = argv[1];
+    if(atoi(argv[1]) &&argc==2 &&isdigit(ascii[0])&& !isalpha(ascii[0]))
     {
     string plainText = get_string("plaintext: ");
-    char calc [*argv[1]];
+    char calc [222];
+    char box[111];
     for(int i = 0,n= strlen(plainText); i<n;i++ )
     {
         if(isalpha(plainText[i]))
         {
-            calc[i] =plainText[i]+atoi(argv[1]);
+            if(isupper(plainText[i]))
+            {
+                if((plainText[i])==90)
+                {
+                    // upperbox[i]=plainText[i]-65;
+                    calc[i]=box[i]+atoi(argv[1])%26 + 65;
+                }
+                else
+                {
+                calc[i] =plainText[i]+atoi(argv[1]);
+                }
+            }
+            else if(islower(plainText[i]))
+            {
+                if((plainText[i])==122)
+                {
+                    // lowerbox[i]=plainText[i]-97;
+                    calc[i]=box[i]+atoi(argv[1])%26 + 97;
+                }
+                else
+                {
+                calc[i] =plainText[i]+atoi(argv[1]);
+                }
+            }
         }
     }
-    printf("ciphertext:%s", calc);
-    }else
+       printf("ciphertext:%s",calc );
+    }else if(!atoi(argv[1]) || argc!=2 ||!isdigit(ascii[0]) )
     {
             printf("Usage: ./caesar key");
     }
-    printf("%d",argc);
 }
