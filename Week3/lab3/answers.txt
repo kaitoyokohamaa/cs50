@@ -1,12 +1,6 @@
-sort1 uses: TODO
-Bubble Sort
-How do you know?: TODO
-Because it was the slowest algorithm as a result of measuring using time
-sort2 uses: TODO
-Merge Sort
-How do you know?: TODO
-Because it was the fastest algorithm as aresult of measuring using time
-sort3 uses: TODO
-Selection Sort
-How do you know?: TODO
-It was the second fastest algorithm as a result of measuring using time.
+sort1 uses: Bubble Sort
+How do you know?: Because it was the slowest algorithm as a result of measuring using time
+sort2 uses: Merge Sort
+How do you know?: Because it was the fastest algorithm as aresult of measuring using time
+sort3 uses: Selection Sort
+How do you know?: It was the second fastest algorithm as a result of measuring using time.
