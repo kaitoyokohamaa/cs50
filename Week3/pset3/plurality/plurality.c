@@ -25,6 +25,8 @@ void print_winner(void);
 
 int main(int argc, string argv[])
 {
+
+    string nameAlice;
     // Check for invalid usage
     if (argc < 2)
     {
@@ -50,10 +52,20 @@ int main(int argc, string argv[])
 
     int voter_count = get_int("Number of voters: ");
 
+       nameAlice = argv[1];
     // Loop over all voters
     for (int i = 0; i < voter_count; i++)
     {
         string name = get_string("Vote: ");
+
+       if(argv[1] == (string)name)
+       {
+           printf("同じだお");
+       }else
+       {
+           printf("%s", (string)name);
+           printf("同じじゃないよ");
+       }
 
         // Check for invalid vote
         if (!vote(name))
@@ -69,26 +81,26 @@ int main(int argc, string argv[])
 // Update vote totals given a new vote
 bool vote(string name)
 {
-    string candidateName;
+
+   printf("%s",name);
+
     bool user = false;
     // TODO
-    int x = 10;
 
-    if (x == 10){
-       printf("x は10と等しい¥n");
-     }
-    // for (int i=0;i <candidate_count;i++)
-    // {
-    //   candidateName = candidates[i].name;
-    // }
-
-    candidateName="Alice";
-    printf("%s",name);
-    if (candidateName == name )
+    for (int i=0;i <candidate_count;i++)
     {
-        printf("入ってるよ");
+         if ((string)name == (string)candidates[i].name )
+    {
+        printf("%s \n",name);
+        printf("%s \n",candidates[i].name);
         user= true;
+    }else
+    {
+        printf("入ってないよ");
     }
+    }
+
+
     return user;
 }
 
