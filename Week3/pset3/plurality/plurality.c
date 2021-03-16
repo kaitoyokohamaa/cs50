@@ -1,7 +1,8 @@
+#include <ctype.h>
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
-
+#include <stdlib.h>
 // Max number of candidates
 #define MAX 9
 
@@ -47,30 +48,28 @@ int main(int argc, string argv[])
     for (int i = 0; i < candidate_count; i++)
     {
         candidates[i].name = argv[i + 1];
+        nameAlice="Alice";
         candidates[i].votes = 0;
     }
 
     int voter_count = get_int("Number of voters: ");
-
-       nameAlice = argv[1];
     // Loop over all voters
     for (int i = 0; i < voter_count; i++)
     {
         string name = get_string("Vote: ");
-
-       if(argv[1] == (string)name)
-       {
-           printf("同じだお");
-       }else
-       {
-           printf("%s", (string)name);
-           printf("同じじゃないよ");
-       }
-
         // Check for invalid vote
         if (!vote(name))
         {
+            if((string)name == nameAlice)
+            {
+                printf("入ってるよ");
+            }else
+            {
+            printf("%d \n", atoi(nameAlice));
+            printf("%d \n", atoi(name));
+            printf("%d \n", atoi(candidates[i].name));
             printf("Invalid vote.\n");
+            }
         }
     }
 
@@ -81,27 +80,15 @@ int main(int argc, string argv[])
 // Update vote totals given a new vote
 bool vote(string name)
 {
-
-   printf("%s",name);
-
-    bool user = false;
     // TODO
-
-    for (int i=0;i <candidate_count;i++)
+  for (int i = 0; i < candidate_count; i++)
     {
-         if ((string)name == (string)candidates[i].name )
+    if (atoi(name) == atoi(candidates[i].name) )
     {
-        printf("%s \n",name);
-        printf("%s \n",candidates[i].name);
-        user= true;
-    }else
-    {
-        printf("入ってないよ");
+        return true;
     }
     }
-
-
-    return user;
+    return false;
 }
 
 // Print the winner (or winners) of the election
@@ -109,6 +96,6 @@ void print_winner(void)
 {
     // TODO
     printf("%c",candidates[1].votes);
-    return;
-}
 
+    return ;
+}
