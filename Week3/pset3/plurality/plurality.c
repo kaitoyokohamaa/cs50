@@ -27,7 +27,7 @@ void print_winner(void);
 int main(int argc, string argv[])
 {
 
-    string nameAlice;
+
     // Check for invalid usage
     if (argc < 2)
     {
@@ -48,7 +48,6 @@ int main(int argc, string argv[])
     for (int i = 0; i < candidate_count; i++)
     {
         candidates[i].name = argv[i + 1];
-        nameAlice="Alice";
         candidates[i].votes = 0;
     }
 
@@ -60,16 +59,7 @@ int main(int argc, string argv[])
         // Check for invalid vote
         if (!vote(name))
         {
-            if((string)name == nameAlice)
-            {
-                printf("入ってるよ");
-            }else
-            {
-            printf("%d \n", atoi(nameAlice));
-            printf("%d \n", atoi(name));
-            printf("%d \n", atoi(candidates[i].name));
             printf("Invalid vote.\n");
-            }
         }
     }
 
@@ -78,24 +68,33 @@ int main(int argc, string argv[])
 }
 
 // Update vote totals given a new vote
-bool vote(string name)
+bool vote(string  name)
 {
-    // TODO
-  for (int i = 0; i < candidate_count; i++)
-    {
-    if (atoi(name) == atoi(candidates[i].name) )
-    {
-        return true;
-    }
-    }
-    return false;
+    for (int i = 0; i < candidate_count; i++)
+        {
+             if(strcmp(name,candidates[i].name)==0)
+             {
+                 candidates[i].votes=candidates[i].votes+1;
+                 return true;
+             }
+        }
+       return false;
 }
 
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
     // TODO
-    printf("%c",candidates[1].votes);
-
-    return ;
+   char max[22];
+   string Winner;
+   for (int i = 0; i < candidate_count; i++)
+    {
+        if(max < candidates[i].votes)
+        {
+                max=i
+        }
+    }
+   printf("%s", Winner);
+   return;
 }
+
