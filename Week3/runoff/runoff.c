@@ -1,11 +1,14 @@
+#include <ctype.h>
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 // Max voters and candidates
 #define MAX_VOTERS 100
 #define MAX_CANDIDATES 9
 
-// preferences[i][j] is jth preference for voter i
+// [i][j] is jth preference for voter i
 int preferences[MAX_VOTERS][MAX_CANDIDATES];
 
 // Candidates have name, vote count, eliminated status
@@ -65,7 +68,6 @@ int main(int argc, string argv[])
     // Keep querying for votes
     for (int i = 0; i < voter_count; i++)
     {
-
         // Query for each rank
         for (int j = 0; j < candidate_count; j++)
         {
@@ -78,7 +80,6 @@ int main(int argc, string argv[])
                 return 4;
             }
         }
-
         printf("\n");
     }
 
@@ -128,13 +129,26 @@ int main(int argc, string argv[])
 bool vote(int voter, int rank, string name)
 {
     // TODO
-    return false;
+   for (int i = 0; i < candidate_count; i++)
+    {
+        if(strcmp(candidates[i].name , name) == 0)
+        {
+        //ここでpreferencesのアップデートを行う
+        preferences[voter][rank]=i;
+        return true;
+        }
+    }
+     return false;
 }
 
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
     // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+      printf("%s",candidates[preferences[0][0]].name);
+    }
     return;
 }
 
