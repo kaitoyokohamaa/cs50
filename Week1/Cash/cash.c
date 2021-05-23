@@ -32,3 +32,49 @@ int main(void)
     while (cents >0);
     printf(" %d \n",change);
 }
+
+//codegym用
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+void checkcash(float n)
+{
+    int count = 0;
+    int cents = round(n * 100);
+    while (cents > 0)
+    {
+        if (cents >= 25)
+        {
+            count++;
+            cents -= 25;
+        }
+        else if (cents >= 10 && cents < 25)
+        {
+            count++;
+            cents -= 10;
+        }
+        else if (cents >= 5 && cents < 10)
+        {
+            count++;
+            cents -= 5;
+        }
+        else if (cents >= 1 && cents < 5)
+        {
+            count++;
+            cents -= 1;
+        }
+    }
+    printf("%d", count);
+}
+
+int main(void)
+{
+    float money = 0;
+    do
+    {
+        money = get_float("Change owed: ");
+    }
+    while (money <= -1);
+    checkcash(money);
+}

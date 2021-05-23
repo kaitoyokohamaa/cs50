@@ -41,3 +41,35 @@ int main(void)
         makeBlock(j);
     }
 }
+
+// codegym academy用
+#include <stdio.h>
+#include <cs50.h>
+
+void mario(int n)
+{
+
+    for (int j = 0 ; j < n; j++)
+    {
+        for (int t = n - 1 ; t > j; t--)
+        {
+            printf(" ");
+        }
+        for (int i = 0 ; i <= j ; i++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+
+int main(void)
+{
+    int height = 0;
+    do
+    {
+        height = get_int("Height: ");
+    }
+    while (height < 1 || height > 8);
+    mario(height);
+}
