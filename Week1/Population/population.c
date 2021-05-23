@@ -1,8 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
 
-
-
 int main(void)
 {
     // TODO: Prompt for start size
@@ -35,4 +33,45 @@ int main(void)
     while(n<=end);
     // TODO: Print number of years
     printf("Years: %d" ,yerars+1);
+}
+
+
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+int main(void)
+{
+    // TODO: Prompt for start size
+    int startSize;
+    do
+    {
+        startSize = get_int("Start size: ");
+    }
+    while (startSize < 9);
+    // TODO: Prompt for end size
+    int endSize;
+    do
+    {
+        endSize = get_int("End size: ");
+    }
+    while (endSize < startSize);
+    // TODO: Calculate number of years until we reach threshold
+
+    int years = 1;
+    int n = startSize + floor((double)startSize / (double)3) - floor((double)startSize / (double)4);
+    if (n < endSize)
+    {
+        do
+        {
+            years++;
+            n  =  n + floor((double)n / (double)3) - floor((double)n / (double)4);
+        }
+        while (n < endSize);
+    }
+    else if (endSize == startSize)
+    {
+        years = 0;
+    }
+    // TODO: Print number of years
+    printf("Years: %d", years);
 }
