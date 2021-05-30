@@ -42,3 +42,58 @@ int main(void)
     printf("\n");
     }
 }
+// codegym
+#include <ctype.h>
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+int calcreadability(string text);
+int main(void)
+{
+    string text = get_string("Text: ");
+    int grade = calcreadability(text);
+    if (grade < 0)
+    {
+        printf("Before Grade 1\n");
+    }
+    else if (grade > 16)
+    {
+        printf("Grade 16+\n");
+    }
+    else
+    {
+        printf("Grade %d\n", grade);
+    }
+}
+
+int calcreadability(string text)
+{
+    int index = 0;
+    int letters = 0;
+    int word = 1 ;
+    int sentence = 0;
+    float L = 0;
+    float S = 0;
+
+    for (int i = 0; strlen(text)  > i; i++)
+    {
+        if (text[i] == '.' || text[i] == '!' || text[i] == '?')
+        {
+            sentence++;
+        }
+        if (isalpha(text[i]))
+        {
+            letters++;
+        }
+        if (text[i] ==  ' ')
+        {
+            word++;
+        }
+    }
+
+    L = ((float)letters / (float)word) * 100;
+    S = ((float)sentence / (float)word) * 100;
+    index = round(0.0588 * L - 0.296 * S - 15.8);
+    return index;
+}
