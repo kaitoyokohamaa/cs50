@@ -206,16 +206,10 @@ void print_winner(void)
 
     for (int j = 0; candidate_count > j; j++)
     {
-        if (num < candidates[j].votes)
-        {
-            printf("%s\n", candidates[j].name);
-            return;
-        }
-        else if (num == candidates[j].votes)
+        if (num == candidates[j].votes)
         {
             printf("%s\n", candidates[j].name);
         }
     }
     return;
 }
-
