@@ -253,7 +253,7 @@ void eliminate(int min)
     }
     return;
 }
-// 
+// codegym
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
@@ -361,6 +361,7 @@ int main(int argc, string argv[])
         {
             for (int i = 0; i < candidate_count; i++)
             {
+                // printf("%s\n", candidates[i].name);
                 if (!candidates[i].eliminated)
                 {
                     printf("%s\n", candidates[i].name);
@@ -388,8 +389,9 @@ bool vote(int voter, int rank, string name)
 
     for (int i = 0; i < candidate_count; i++)
     {
-        if(strcmp(candidates[i].name,name)==0){
-            preferences[voter][rank] =i ;
+        if (strcmp(candidates[i].name, name) == 0)
+        {
+            preferences[voter][rank] = i ;
             return true;
         }
     }
@@ -402,34 +404,31 @@ void tabulate(void)
     // TODO
     for (int i = 0; i < voter_count; i++)
     {
-        if(!candidates[preferences[i][0]].eliminated)
+        for (int j = 0; j < candidate_count; j++)
         {
-            candidates[preferences[i][0]].votes+=1;
-        }else if(candidates[preferences[i][0]].eliminated)
-        {
-            candidates[preferences[i][1]].votes+=1;
+            if (!candidates[preferences[i][j]].eliminated)
+            {
+                candidates[preferences[i][j]].votes++;
+                break;
+            }
         }
     }
-
 }
+
 
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
     // TODO
-    int half=round((float)voter_count/2);
-    bool iswin=false;
+    float half = ((float)voter_count / 2);
+    bool iswin = false;
     for (int i = 0; i < candidate_count; i++)
     {
-            if(half <= candidates[i].votes)
-            {
-                printf("%s",candidates[i].name);
-                iswin=true;
-            }
-            else if(half > candidates[i].votes)
-            {
-                iswin=false;
-            }
+        if (half < candidates[i].votes)
+        {
+            printf("%s\n", candidates[i].name);
+            iswin = true;
+        }
     }
     return iswin;
 }
@@ -439,13 +438,13 @@ bool print_winner(void)
 int find_min(void)
 {
     // TODO
-    int min=candidates[preferences[0][0]].votes;
+    int min = candidates[0].votes;
 
-    for (int i = 1; i < voter_count; i++)
+    for (int i = 1; i < candidate_count; i++)
     {
-        if(!candidates[i].eliminated && min > candidates[preferences[i][0]].votes)
+        if (!candidates[i].eliminated && min > candidates[i].votes)
         {
-            min=candidates[preferences[i][0]].votes;
+            min = candidates[i].votes;
         }
     }
     return min;
@@ -456,19 +455,25 @@ int find_min(void)
 bool is_tie(int min)
 {
     // TODO
-    int count=0;
+    int count = 0;
+    int remainCount = 0;
+    bool isTie = false;
     for (int i = 0; i < candidate_count; i++)
     {
-         if(!candidates[i].eliminated &&candidates[i].votes != min)
+        if (!candidates[i].eliminated)
         {
-           count++;
+            remainCount++;
         }
-    if(count == 0)
+        if (!candidates[i].eliminated  && candidates[i].votes == min)
+        {
+            count += 1;
+        }
+    }
+    if (count == remainCount)
     {
         return true;
     }
-    }
-        return false;
+    return isTie;
 }
 
 // Eliminate the candidate (or candidates) in last place
@@ -477,9 +482,9 @@ void eliminate(int min)
     // TODO
     for (int i = 0; i < candidate_count; i++)
     {
-        if(min >= candidates[i].votes)
+        if (min >= candidates[i].votes)
         {
-            candidates[i].eliminated= true;
+            candidates[i].eliminated = true;
         }
     }
 }
