@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <title>Trivia!</title>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+      <div class="section">
+        <h2>Part 1: Multiple Choice</h2>
+        <hr />
+
+        <!-- TODO: Add multiple choice question here -->
+        <h3>
+          What is the approximate ratio of people to sheep in New Zealand?
+        </h3>
+        <div id="correctORincorrect"></div>
+        <button id="btn1" class="btn1" onclick="changePageBgColor('btn1')">
+          6 people per 1 sheep
+        </button>
+        <button id="btn2" class="btn2" onclick="changePageBgColor('btn2')">
+          3 people per 1 sheep
+        </button>
+        <button id="btn3" class="btn3" onclick="changePageBgColor('btn3')">
+          1 people per 1 sheep
+        </button>
+        <button id="btn4" class="btn4" onclick="changePageBgColor('btn4')">
+          1 people per 3 sheep
+        </button>
+        <button id="btn5" class="btn5" onclick="changePageBgColor('btn5')">
+          1 people per 6 sheep
+        </button>
+      </div>
+
+      <div class="section">
+        <h2>Part 2: Free Response</h2>
+        <hr />
+
+        <!-- TODO: Add free response question here -->
+
+        <h3>
+          In whitch country is it illegal to own only one guinea pig,as a lone
+          guniea pig might lonely?
+        </h3>
+        <div id="answer"></div>
+        <label>
+          <input id="inputname" type="text" />
+        </label>
+        <button id="ansbtn">Check Answer</button>
+      </div>
+    </div>
+    <script>
+      // TODO: Add code to check answers to questions
+      const btn1 = document.getElementById("btn1");
+      const btn2 = document.getElementById("btn2");
+      const btn3 = document.getElementById("btn3");
+      const btn4 = document.getElementById("btn4");
+      const btn5 = document.getElementById("btn5");
+      var textbox = document.getElementById("correctORincorrect");
+      function calc() {
+        if (btn1 && btn2 && btn3 && btn4 && btn5) {
+          btn1.addEventListener("click", (e) => {
+            textbox.innerText = "incorrect";
+          });
+          btn2.addEventListener("click", (e) => {
+            textbox.innerText = "incorrect";
+          });
+          btn3.addEventListener("click", (e) => {
+            textbox.innerText = "incorrect";
+          });
+          btn4.addEventListener("click", (e) => {
+            textbox.innerText = "incorrect";
+          });
+          btn5.addEventListener("click", (e) => {
+            textbox.innerText = "correct!";
+          });
+        }
+      }
+      window.addEventListener("load", calc);
+      function changePageBgColor(type) {
+        if (type == "btn1") {
+          btn1.style.backgroundColor = "#ff0000";
+        } else if (type == "btn2") {
+          btn2.style.backgroundColor = "#ff0000";
+        } else if (type == "btn3") {
+          btn3.style.backgroundColor = "#ff0000";
+        } else if (type == "btn4") {
+          btn4.style.backgroundColor = "#ff0000";
+        } else if (type == "btn5") {
+          btn5.style.backgroundColor = "#00FF00";
+        }
+      }
+
+      var ans = document.getElementById("answer");
+
+      let ansBtn = document.getElementById("ansbtn");
+
+      ansBtn.addEventListener("click", function () {
+        let input = document.querySelector("#inputname");
+        let name = document.querySelector("#inputname").value;
+        if (name === "Switzerland") {
+          answer.innerText = "correct!";
+          input.style.backgroundColor = "#00FF00";
+        } else {
+          input.style.backgroundColor = "#ff0000";
+          answer.innerText = "incorrect";
+        }
+      });
+    </script>
+  </body>
+</html>
