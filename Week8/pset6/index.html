@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+    <link href="styles.css" rel="stylesheet" />
+    <title>My Webpage</title>
+  </head>
+  <body>
+    <header>
+        <div x-data="{ menu: false }" class="relative right-0 top-0">
+
+            <button @click="menu = !menu" class="z-50 fixed right-2 top-2 px-4 py-4 bg-black   transform duration-500 ease-in-out md:hover:scale-110 motion-reduce:transform-none text-white m-2 focus:outline-none" >
+              <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path x-show="!menu" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+              <path x-show="menu"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              </button>
+              <div class="fixed z-40 absolute top-0 right-0 bottom-0 left-0">
+               <ul
+              x-show.transition.duration.500ms="menu"
+              @click.away="menu = false"
+            class="bg-white " style="display: none;">
+              <li class="text-lg py-2"><a href="#" class="px-2 hover:text-gray-200">about</a></li>
+              <li class="text-lg py-2"><a href="#" class="px-2 hover:text-gray-200">contact</a></li>
+               <li class="text-lg py-2"><a href="#" class="px-2 hover:text-gray-200">background</a></li>
+            </ul>
+        </div>
+          </div>
+      <div class=" w-full overflow-hidden">
+        <img class="w-10/12 opacity-50 " src="./img/top.jpg" />
+        <h2 class="absolute inset-2/3 font-bold text-8xl ">Kaito Yokohama</p>
+        </div>
+    </header>
+    <main>
+
+      <div
+        class="
+          shadow-xl
+          rounded-lg
+          z-10
+          order-2
+          md:order-1
+          m-auto
+          w-full
+          h-full
+          md:w-6/12
+          flex
+          items-center
+          -mt-6
+          md:mt-0
+        "
+      >
+        <div
+          class="
+            mt-40
+            p-8
+            md:pr-18 md:pl-14 md:py-12
+            mx-2
+            md:mx-0
+            h-full
+            bg-white
+            md:rounded-none md:rounded-lg
+            shadow-xl
+            md:shadow-none
+          "
+        >
+          <div>
+            <img
+              class="rounded-full w-40 h-40 shadow-2xl"
+              src="./img/phonix.jpeg"
+            />
+          </div>
+          <div>
+            <h3 class="hidden md:block font-bold text-2xl text-gray-700">
+              横浜海斗/Kaito Yokohama
+            </h3>
+            <p class="text-gray-600 text-justify">
+              mebu株式会社とスリーシェイク株式会社でフロントエンドエンジニアとして働いております。
+              お仕事依頼やご連絡は<a
+                class="border-b-2"
+                href="https://twitter.com/mj3PBy4ayqxfy14"
+                target="_blunk"
+                >こちら</a
+              >からお願いします。
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>
