@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block title %} Home {% endblock %} {% block main
+%}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Shares</th>
+      <th>Price</th>
+      <th>TOTAL</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rowBuys %}
+    <tr>
+      <td>{{row["name"]}}</td>
+      <td>{{row["user_name"]}}</td>
+      <td>{{row["shares"]}}</td>
+      <td>{{row["money"] | usd }}</td>
+      <td>{{(row["shares"]*row["money"]) | usd }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="4">CASH</td>
+      <td>{{total | usd}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4"></td>
+      <td>{{cash[0]["cash"] | usd }}</td>
+    </tr>
+  </tfoot>
+</table>
+{% endblock %}
